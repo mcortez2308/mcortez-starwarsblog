@@ -1,5 +1,6 @@
 import rigoImageUrl from "../assets/img/rigo-baby.jpg";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
+import { HCard } from "../components/HCard";
 
 export const Home = () => {
 	const { store, dispatch } = useGlobalReducer();
@@ -97,6 +98,11 @@ export const Home = () => {
 
 	return (
 		<div className="text-center mt-5">
+			{store.selectedFavorite && (
+				<div className="container mb-4 d-flex justify-content-center">
+					<HCard favorito={store.selectedFavorite} />
+				</div>
+			)}
 			<div className="accordion" id="accordionExample">
 				<div className="accordion-item">
 					<h2 className="accordion-header">
