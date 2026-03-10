@@ -1,4 +1,3 @@
-import { getVehicles } from "./services/starWarsApi";
 
 export const initialStore=()=>{
   return{

@@ -18,7 +18,7 @@ export const Home = () => {
 		console.log("Adding to favorites:", item);
 		let favorito = {
 			name: item.properties?.name ?? "No name",			
-			uid: item.properties?.uid ?? "Unknown uid",
+			uid: item.uid ?? item.properties?.uid ?? "Unknown uid",
 			_id: item._id ?? "Unknown _id",
 			favtype: favtype
 		};
@@ -42,7 +42,7 @@ export const Home = () => {
 							<p className="card-text mb-3">Eye Color: {item.properties?.eye_color ?? "No eye color"}</p>
 							<div className="d-flex justify-content-between">
 								<a href="#" className="btn btn-primary">Learn more!</a>
-								<button className="favbutton btn btn-secondary" onClick={() => addToFavorites(item, "character")}><i className="fa-solid fa-heart"></i></button>
+								<button className="favbutton btn btn-secondary" onClick={() => addToFavorites(item, "people")}><i className="fa-solid fa-heart"></i></button>
 							</div>
 						</div>
 					</div>
@@ -66,7 +66,7 @@ export const Home = () => {
 							<p className="card-text mb-3">Terrain: {item.properties.terrain ?? "No terrain"}</p>
 							<div className="d-flex justify-content-between">
 								<a href="#" className="btn btn-primary">Learn more!</a>
-								<button className="favbutton btn btn-secondary" onClick={() => addToFavorites(item, "planet")}><i className="fa-solid fa-heart"></i></button>
+								<button className="favbutton btn btn-secondary" onClick={() => addToFavorites(item, "planets")}><i className="fa-solid fa-heart"></i></button>
 							</div>
 						</div>
 					</div>
@@ -87,7 +87,7 @@ export const Home = () => {
 							<p className="card-text mb-3">Vehicle Class: {item.properties.vehicle_class ?? "No vehicle class"}</p>
 							<div className="d-flex justify-content-between">
 								<a href="#" className="btn btn-primary">Learn more!</a>
-								<button className="favbutton btn btn-secondary" onClick={() => addToFavorites(item, "vehicle")}><i className="fa-solid fa-heart"></i></button>
+								<button className="favbutton btn btn-secondary" onClick={() => addToFavorites(item, "vehicles")}><i className="fa-solid fa-heart"></i></button>
 							</div>
 						</div>
 					</div>
