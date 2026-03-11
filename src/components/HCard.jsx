@@ -39,6 +39,14 @@ export const HCard = ({ favorito }) => {
                                 <p className="card-text mb-3">Eye Color:</p>
                                 <p className="card-text mb-3">{properties.eye_color ?? "No eye color"}</p>
                             </div>
+                            <div className="card-detail">
+                                <p className="card-text mb-3">Birth Year:</p>
+                                <p className="card-text mb-3">{properties.birth_year ?? "No birth year"}</p>
+                            </div>
+                            <div className="card-detail">
+                                <p className="card-text mb-3">Height:</p>
+                                <p className="card-text mb-3">{properties.height ?? "No height"}</p>
+                            </div>
                         </>
                     )}
                     {favtype === "planets" && (
@@ -51,6 +59,18 @@ export const HCard = ({ favorito }) => {
                                 <p className="card-text mb-3">Terrain:</p>
                                 <p className="card-text mb-3">{properties.terrain ?? "No terrain"}</p>
                             </div>
+                            <div className="card-detail">
+                                <p className="card-text mb-3">Climate:</p>
+                                <p className="card-text mb-3">{properties.climate ?? "No climate"}</p>
+                            </div>
+                            <div className="card-detail">
+                                <p className="card-text mb-3">Orbital Period:</p>
+                                <p className="card-text mb-3">{properties.orbital_period ?? "No orbital period"}</p>
+                            </div>
+                            <div className="card-detail">
+                                <p className="card-text mb-3">Diameter:</p>
+                                <p className="card-text mb-3">{properties.diameter ?? "No diameter"}</p>
+                            </div>
                         </>
                     )}
                     {favtype === "vehicles" && (
@@ -62,6 +82,18 @@ export const HCard = ({ favorito }) => {
                             <div className="card-detail">
                                 <p className="card-text mb-3">Vehicle Class:</p>
                                 <p className="card-text mb-3">{properties.vehicle_class ?? "No vehicle class"}</p>
+                            </div>
+                            <div className="card-detail">
+                                <p className="card-text mb-3">Passengers:</p>
+                                <p className="card-text mb-3">{properties.passengers ?? "No passengers"}</p>
+                            </div>
+                            <div className="card-detail">
+                                <p className="card-text mb-3">Cargo Capacity:</p>
+                                <p className="card-text mb-3">{properties.cargo_capacity ?? "No cargo capacity"}</p>
+                            </div>
+                            <div className="card-detail">
+                                <p className="card-text mb-3">Length:</p>
+                                <p className="card-text mb-3">{properties.length ?? "No length"}</p>
                             </div>
                         </>
                     )}

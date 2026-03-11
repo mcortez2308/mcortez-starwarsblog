@@ -41,6 +41,12 @@ export default function storeReducer(store, action = {}) {
         ...store,
         selectedFavorite: action.payload
       };
+
+    case 'CLEAR_SELECTED_FAVORITE':
+      return {
+        ...store,
+        selectedFavorite: null
+      };
       
     case 'REMOVE_FAVORITE':
       const favoriteToRemove = action.payload;

@@ -7,7 +7,7 @@ export const Navbar = () => {
 	return (
 		<nav className="navbar navbar-light bg-light">
 			<div className="container">
-				<Link to="/">
+				<Link to="/" onClick={() => dispatch({ type: 'CLEAR_SELECTED_FAVORITE' })}>
 					<img src="https://raw.githubusercontent.com/breatheco-de/swapi-images/master/public/images/sw_logo.svg" alt="Logo" />
 				</Link>
 
