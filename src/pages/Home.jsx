@@ -14,17 +14,39 @@ export const Home = () => {
 		? store.planets
 		: [];
 
+	const buildFavoriteItem = (item, favtype) => ({
+		name: item.properties?.name ?? "No name",
+		uid: item.uid ?? item.properties?.uid ?? "Unknown uid",
+		_id: item._id ?? "Unknown _id",
+		favtype
+	});
+
+	const isFavorite = (item, favtype) => {
+		const uid = item.uid ?? item.properties?.uid;
+		const id = item._id;
+		return store.favorites.some((fav) => (
+			fav.favtype === favtype && (
+				(uid && fav.uid === uid) ||
+				(id && fav._id === id)
+			)
+		));
+	};
+
     function addToFavorites(item, favtype) {
 		console.log("Adding to favorites:", item);
-		let favorito = {
-			name: item.properties?.name ?? "No name",			
-			uid: item.uid ?? item.properties?.uid ?? "Unknown uid",
-			_id: item._id ?? "Unknown _id",
-			favtype: favtype
-		};
+		const favorito = buildFavoriteItem(item, favtype);
 		console.log("Favorite item:", favorito);		
+		if (isFavorite(item, favtype)) {
+			dispatch({ type: 'REMOVE_FAVORITE', payload: favorito });
+			return;
+		}
 		dispatch({ type: 'ADD_FAVORITE', payload: favorito });
 	}
+
+	const selectFavorite = (event, item, favtype) => {
+		event.preventDefault();
+		dispatch({ type: 'SELECT_FAVORITE', payload: buildFavoriteItem(item, favtype) });
+	};
 
 	const renderGridcharacters = () => (
 		<div
@@ -41,8 +63,8 @@ export const Home = () => {
 							<p className="card-text mb-1">Hair Color: {item.properties?.hair_color ?? "No hair color"}</p>
 							<p className="card-text mb-3">Eye Color: {item.properties?.eye_color ?? "No eye color"}</p>
 							<div className="d-flex justify-content-between">
-								<a href="#" className="btn btn-primary">Learn more!</a>
-								<button className="favbutton btn btn-secondary" onClick={() => addToFavorites(item, "people")}><i className="fa-solid fa-heart"></i></button>
+								<a href="#" className="btn btn-primary" onClick={(event) => selectFavorite(event, item, "people")}>Learn more!</a>
+								<button className={`favbutton btn ${isFavorite(item, "people") ? "is-favorite" : "btn-secondary"}`} onClick={() => addToFavorites(item, "people")}><i className="fa-solid fa-heart"></i></button>
 							</div>
 						</div>
 					</div>
@@ -65,8 +87,8 @@ export const Home = () => {
 							<p className="card-text mb-1">Population: {item.properties.population ?? "No population"}</p>
 							<p className="card-text mb-3">Terrain: {item.properties.terrain ?? "No terrain"}</p>
 							<div className="d-flex justify-content-between">
-								<a href="#" className="btn btn-primary">Learn more!</a>
-								<button className="favbutton btn btn-secondary" onClick={() => addToFavorites(item, "planets")}><i className="fa-solid fa-heart"></i></button>
+								<a href="#" className="btn btn-primary" onClick={(event) => selectFavorite(event, item, "planets")}>Learn more!</a>
+								<button className={`favbutton btn ${isFavorite(item, "planets") ? "is-favorite" : "btn-secondary"}`} onClick={() => addToFavorites(item, "planets")}><i className="fa-solid fa-heart"></i></button>
 							</div>
 						</div>
 					</div>
@@ -86,8 +108,8 @@ export const Home = () => {
 							<p className="card-text mb-1">Model: {item.properties.model ?? "No model"}</p>
 							<p className="card-text mb-3">Vehicle Class: {item.properties.vehicle_class ?? "No vehicle class"}</p>
 							<div className="d-flex justify-content-between">
-								<a href="#" className="btn btn-primary">Learn more!</a>
-								<button className="favbutton btn btn-secondary" onClick={() => addToFavorites(item, "vehicles")}><i className="fa-solid fa-heart"></i></button>
+								<a href="#" className="btn btn-primary" onClick={(event) => selectFavorite(event, item, "vehicles")}>Learn more!</a>
+								<button className={`favbutton btn ${isFavorite(item, "vehicles") ? "is-favorite" : "btn-secondary"}`} onClick={() => addToFavorites(item, "vehicles")}><i className="fa-solid fa-heart"></i></button>
 							</div>
 						</div>
 					</div>

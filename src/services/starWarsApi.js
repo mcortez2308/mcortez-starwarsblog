@@ -3,7 +3,7 @@ const urlBase = "https://www.swapi.tech/api";
 export async function getCharacters() {
     try {
         let resultscharacter = [];
-        const response = await fetch(`${urlBase}/people?page=1&limit=5`);
+        const response = await fetch(`${urlBase}/people?page=2&limit=10`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }

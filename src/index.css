@@ -33,6 +33,12 @@
     border: 1px solid #bb3434;
 }
 
+.favbutton.is-favorite {
+    background-color: #bb3434;
+    color: white;
+    border: 1px solid #bb3434;
+}
+
 .card-detail {
     color:#bb3434;
     font-size: 16px;
